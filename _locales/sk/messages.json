@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Prekladajte stránky alebo vybraný text čisto bez vyskakovacích okien pomocou rýchlych skratiek."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Preložiť stránku"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Preložiť výber"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Prekladajte stránky alebo vybraný text čisto bez vyskakovacích okien pomocou rýchlych skratiek."
+  },
+  "popupSelectLanguage": {
+    "message": "Vyberte jazyk"
+  },
+  "popupSearch": {
+    "message": "Hľadať"
+  },
+  "popupFavorites": {
+    "message": "Obľúbené"
+  },
+  "popupAllLanguages": {
+    "message": "Všetky jazyky"
+  },
+  "popupShortcutsSection": {
+    "message": "Klávesové skratky prekladu"
+  },
+  "popupShortcutSelection": {
+    "message": "Preložiť výber"
+  },
+  "popupShortcutPage": {
+    "message": "Preložiť stránku"
+  },
+  "popupRevertTip": {
+    "message": "Stlačte znova pre vrátenie."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Podporiť projekt"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

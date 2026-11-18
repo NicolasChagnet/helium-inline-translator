@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Ittraduċi paġni jew test magħżul b'mod nadif mingħajr popups billi tuża shortcuts mgħaġġla."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Ittraduċi l-paġna"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Ittraduċi l-għażla"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Ittraduċi paġni jew test magħżul b'mod nadif mingħajr popups billi tuża shortcuts mgħaġġla."
+  },
+  "popupSelectLanguage": {
+    "message": "Agħżel lingwa"
+  },
+  "popupSearch": {
+    "message": "Fittex"
+  },
+  "popupFavorites": {
+    "message": "Favoriti"
+  },
+  "popupAllLanguages": {
+    "message": "Il-lingwi kollha"
+  },
+  "popupShortcutsSection": {
+    "message": "Shortcuts tat-traduzzjoni"
+  },
+  "popupShortcutSelection": {
+    "message": "Ittraduċi l-għażla"
+  },
+  "popupShortcutPage": {
+    "message": "Ittraduċi l-paġna"
+  },
+  "popupRevertTip": {
+    "message": "Agħfas mill-ġdid biex tirritorna."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Agħti donazzjoni lill-proġett"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

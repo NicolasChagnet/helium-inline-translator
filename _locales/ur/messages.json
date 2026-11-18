@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "فوری شارٹ کٹس کا استعمال کرتے ہوئے پاپ اپ کے بغیر صفحات یا منتخب متن کا صاف ترجمہ کریں۔"
+  },
+  "contextMenuTranslatePage": {
+    "message": "صفحہ کا ترجمہ کریں"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "انتخاب کا ترجمہ کریں"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "فوری شارٹ کٹس کا استعمال کرتے ہوئے پاپ اپ کے بغیر صفحات یا منتخب متن کا صاف ترجمہ کریں۔"
+  },
+  "popupSelectLanguage": {
+    "message": "زبان منتخب کریں"
+  },
+  "popupSearch": {
+    "message": "تلاش"
+  },
+  "popupFavorites": {
+    "message": "پسندیدہ"
+  },
+  "popupAllLanguages": {
+    "message": "تمام زبانیں"
+  },
+  "popupShortcutsSection": {
+    "message": "ترجمہ شارٹ کٹس"
+  },
+  "popupShortcutSelection": {
+    "message": "انتخاب کا ترجمہ کریں"
+  },
+  "popupShortcutPage": {
+    "message": "صفحہ کا ترجمہ کریں"
+  },
+  "popupRevertTip": {
+    "message": "واپس جانے کے لیے دوبارہ دبائیں۔"
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ پروجیکٹ کو عطیہ کریں"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

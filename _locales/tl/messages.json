@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Isalin ang mga pahina o napiling teksto nang malinis na walang mga popup gamit ang mabilis na shortcut."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Isalin ang pahina"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Isalin ang napili"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Isalin ang mga pahina o napiling teksto nang malinis na walang mga popup gamit ang mabilis na shortcut."
+  },
+  "popupSelectLanguage": {
+    "message": "Pumili ng wika"
+  },
+  "popupSearch": {
+    "message": "Maghanap"
+  },
+  "popupFavorites": {
+    "message": "Mga Paborito"
+  },
+  "popupAllLanguages": {
+    "message": "Lahat ng Wika"
+  },
+  "popupShortcutsSection": {
+    "message": "Mga Shortcut sa Pagsasalin"
+  },
+  "popupShortcutSelection": {
+    "message": "Isalin ang napili"
+  },
+  "popupShortcutPage": {
+    "message": "Isalin ang pahina"
+  },
+  "popupRevertTip": {
+    "message": "Pindutin muli upang ibalik."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Mag-donate sa Proyekto"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

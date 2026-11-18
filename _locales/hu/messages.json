@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Fordítson oldalakat vagy kijelölt szöveget tisztán, felugró ablakok nélkül, gyorsbillentyűkkel."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Oldal fordítása"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Kijelölés fordítása"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Fordítson oldalakat vagy kijelölt szöveget tisztán, felugró ablakok nélkül, gyorsbillentyűkkel."
+  },
+  "popupSelectLanguage": {
+    "message": "Válasszon nyelvet"
+  },
+  "popupSearch": {
+    "message": "Keresés"
+  },
+  "popupFavorites": {
+    "message": "Kedvencek"
+  },
+  "popupAllLanguages": {
+    "message": "Összes nyelv"
+  },
+  "popupShortcutsSection": {
+    "message": "Fordítási gyorsbillentyűk"
+  },
+  "popupShortcutSelection": {
+    "message": "Kijelölés fordítása"
+  },
+  "popupShortcutPage": {
+    "message": "Oldal fordítása"
+  },
+  "popupRevertTip": {
+    "message": "Nyomja meg újra a visszaállításhoz."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Támogassa a projektet"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

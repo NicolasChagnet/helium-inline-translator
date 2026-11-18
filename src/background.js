@@ -1,8 +1,30 @@
-﻿// src/background.js
-console.log("Background script starting...");
+// src/background.js
 
 const BADGE_TIMEOUT_MS = 4000;
 const badgeTimers = new Map();
+
+const CONTEXT_MENUS = [
+  {
+    id: "translate-page",
+    messageKey: "contextMenuTranslatePage",
+    contexts: ["page"],
+  },
+  {
+    id: "translate-selection",
+    messageKey: "contextMenuTranslateSelection",
+    contexts: ["selection"],
+  },
+];
+
+// Both the context menus and the keyboard commands share these ids.
+const COMMAND_ACTIONS = {
+  "translate-page": "translate-full-page",
+  "translate-selection": "translate-selection",
+};
+
+function getMessage(key, fallback) {
+  return chrome.i18n.getMessage(key) || fallback;
+}
 
 function setBadgeState(state, tabId) {
   const key = typeof tabId === "number" ? tabId : "global";
@@ -31,114 +53,139 @@ function setBadgeState(state, tabId) {
   badgeTimers.set(key, timeoutId);
 }
 
+// Context menu titles follow the browser UI language, because chrome.i18n reads
+// the same locale that picks the _locales/<lang> folder.
 function setupContextMenus() {
   chrome.contextMenus.removeAll(() => {
-    console.log("Context menus (re)created.");
-    // This menu appears only when you right-click on the page without selecting text
-    chrome.contextMenus.create({
-      id: "translate-page",
-      title: "Traduzir página inteira",
-      contexts: ["page"],
-    });
-    // This menu appears only when you right-click on selected text
-    chrome.contextMenus.create({
-      id: "translate-selection",
-      title: "Traduzir texto selecionado",
-      contexts: ["selection"],
-    });
+    for (const { id, messageKey, contexts } of CONTEXT_MENUS) {
+      chrome.contextMenus.create({
+        id,
+        title: getMessage(messageKey, "Translate"),
+        contexts,
+      });
+    }
+  });
+}
+
+function translateInTab(tabId, action) {
+  return chrome.tabs.sendMessage(tabId, { action }).catch(() => {
+    // No content script here: chrome:// pages, the Web Store, or a PDF viewer.
+    setBadgeState("error", tabId);
   });
 }
 
 chrome.runtime.onInstalled.addListener((details) => {
-  console.log("Extension installed/updated.");
   setupContextMenus();
 
-  if (details.reason === "install") {
-    chrome.i18n.getAcceptLanguages((languages) => {
-      if (languages && languages.length > 0) {
-        const primaryLang = languages[0].split("-")[0];
-        console.log(
-          `Helium Inline Translator: Detected primary language: ${primaryLang}. Setting as default.`
-        );
-        chrome.storage.sync.set({ targetLanguage: primaryLang });
-      } else {
-        chrome.storage.sync.set({ targetLanguage: "en" });
-      }
-    });
+  if (details.reason !== "install") {
+    return;
   }
+
+  chrome.i18n.getAcceptLanguages((languages) => {
+    const primaryLang = languages?.[0]?.split("-")[0];
+    chrome.storage.sync.set({ targetLanguage: primaryLang || "en" });
+  });
 });
 
-setupContextMenus();
+chrome.runtime.onStartup.addListener(setupContextMenus);
+
+const RETRY_LIMIT = 3;
+const RETRY_BASE_DELAY_MS = 600;
+const RETRY_MAX_DELAY_MS = 4000;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function retryDelay(attempt) {
+  const delay = Math.min(
+    RETRY_BASE_DELAY_MS * 2 ** (attempt - 1),
+    RETRY_MAX_DELAY_MS
+  );
+  return delay + Math.random() * 200;
+}
+
+async function requestTranslation(text, targetLang) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(
+    text
+  )}`;
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    const error = new Error(
+      `Translation service responded with ${response.status}`
+    );
+    // 4xx errors other than rate limiting will not resolve on a retry.
+    error.retryable = response.status === 429 || response.status >= 500;
+    throw error;
+  }
+
+  const data = await response.json();
+  if (!data?.[0]?.[0]?.[0]) {
+    throw new Error("Invalid translation response format");
+  }
+  return data[0].map((segment) => segment[0]).join("");
+}
 
 async function translateText(text) {
   const { targetLanguage } = await chrome.storage.sync.get("targetLanguage");
   const targetLang = targetLanguage || "en";
 
-  // Debugging log to see which language is being used
-  console.log(
-    `Helium Inline Translator: Translating to target language: '${targetLang}'`
-  );
-
-  const sourceLang = "auto";
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(
-    text
-  )}`;
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (data && data[0] && data[0][0] && data[0][0][0]) {
-      return {
-        success: true,
-        translatedText: data[0].map((segment) => segment[0]).join(""),
-      };
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const translatedText = await requestTranslation(text, targetLang);
+      return { success: true, translatedText };
+    } catch (error) {
+      const canRetry = error.retryable !== false && attempt < RETRY_LIMIT;
+      if (!canRetry) {
+        console.error(`Translation failed after ${attempt} attempt(s):`, error);
+        return { success: false, translatedText: "" };
+      }
+      await sleep(retryDelay(attempt));
     }
-    throw new Error("Invalid translation response format");
-  } catch (error) {
-    console.error("Translation Error:", error);
-    return {
-      success: false,
-      translatedText: "Erro na tradução.",
-    };
   }
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "getTranslation") {
-    translateText(request.text)
-      .then((result) => {
-        const tabId = sender?.tab?.id;
-        setBadgeState(result.success ? "success" : "error", tabId);
-        sendResponse({ translatedText: result.translatedText });
-      })
-      .catch((error) => {
-        console.error("Message handler error:", error);
-        const tabId = sender?.tab?.id;
-        setBadgeState("error", tabId);
-        sendResponse({ translatedText: "Erro na tradução." });
-      });
-    return true;
+  if (request.action === "reportTranslationFailure") {
+    // Some batches never succeeded, so the last badge state is misleading.
+    setBadgeState("error", sender?.tab?.id);
+    return;
   }
+
+  if (request.action !== "getTranslation") {
+    return;
+  }
+
+  translateText(request.text)
+    .then((result) => {
+      setBadgeState(result.success ? "success" : "error", sender?.tab?.id);
+      sendResponse(result);
+    })
+    .catch((error) => {
+      console.error("Message handler error:", error);
+      setBadgeState("error", sender?.tab?.id);
+      sendResponse({ success: false, translatedText: "" });
+    });
+  return true;
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "translate-page") {
-    chrome.tabs.sendMessage(tab.id, { action: "translate-full-page" });
-  } else if (info.menuItemId === "translate-selection") {
-    chrome.scripting
-      .insertCSS({
-        target: { tabId: tab.id },
-        files: ["css/inline.css"],
-      })
-      .then(() => {
-        chrome.tabs.sendMessage(tab.id, {
-          action: "translate-selection",
-        });
-      })
-      .catch((error) => {
-        console.error("Error inserting CSS:", error);
-        chrome.tabs.sendMessage(tab.id, {
-          action: "translate-selection",
-        });
-      });
+  const action = COMMAND_ACTIONS[info.menuItemId];
+  if (action && typeof tab?.id === "number") {
+    translateInTab(tab.id, action);
+  }
+});
+
+chrome.commands.onCommand.addListener(async (command) => {
+  const action = COMMAND_ACTIONS[command];
+  if (!action) {
+    return;
+  }
+
+  const [tab] = await chrome.tabs.query({
+    active: true,
+    lastFocusedWindow: true,
+  });
+  if (typeof tab?.id === "number") {
+    await translateInTab(tab.id, action);
   }
 });

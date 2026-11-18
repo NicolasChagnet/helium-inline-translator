@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Aistrigh leathanaigh nó téacs roghnaithe go néata gan fhuinneoga aníos ag baint úsáide as aicearraí tapa."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Aistrigh leathanach"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Aistrigh roghnú"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Aistrigh leathanaigh nó téacs roghnaithe go néata gan fhuinneoga aníos ag baint úsáide as aicearraí tapa."
+  },
+  "popupSelectLanguage": {
+    "message": "Roghnaigh teanga"
+  },
+  "popupSearch": {
+    "message": "Cuardaigh"
+  },
+  "popupFavorites": {
+    "message": "Ceanáin"
+  },
+  "popupAllLanguages": {
+    "message": "Gach Teanga"
+  },
+  "popupShortcutsSection": {
+    "message": "Aicearraí Aistriúcháin"
+  },
+  "popupShortcutSelection": {
+    "message": "Aistrigh roghnú"
+  },
+  "popupShortcutPage": {
+    "message": "Aistrigh leathanach"
+  },
+  "popupRevertTip": {
+    "message": "Brúigh arís chun filleadh."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Tabhartais don Tionscadal"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

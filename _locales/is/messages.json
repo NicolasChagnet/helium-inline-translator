@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Þýddu síður eða valinn texta hreint án sprettiglugga með flýtileiðum."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Þýða síðu"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Þýða val"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Þýddu síður eða valinn texta hreint án sprettiglugga með flýtileiðum."
+  },
+  "popupSelectLanguage": {
+    "message": "Veldu tungumál"
+  },
+  "popupSearch": {
+    "message": "Leita"
+  },
+  "popupFavorites": {
+    "message": "Eftirlæti"
+  },
+  "popupAllLanguages": {
+    "message": "Öll tungumál"
+  },
+  "popupShortcutsSection": {
+    "message": "Þýðingarflýtileiðir"
+  },
+  "popupShortcutSelection": {
+    "message": "Þýða val"
+  },
+  "popupShortcutPage": {
+    "message": "Þýða síðu"
+  },
+  "popupRevertTip": {
+    "message": "Ýttu aftur til að snúa til baka."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Styrkja verkefnið"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

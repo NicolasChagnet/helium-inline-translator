@@ -17,7 +17,8 @@ The project started when moving from Microsoft Edge to Helium Browser revealed t
 ## Features
 
 - Inline translation for full pages and highlighted passages
-- Keyboard shortcuts: `Shift + Alt + Q` (selection) and `Shift + Alt + W` (page)
+- Keyboard shortcuts: `Shift + Alt + Q` (selection) and `Shift + Alt + W` (page) on Windows/Linux, `Ctrl + S` (selection) and `Ctrl + P` (page) on macOS
+- Shortcuts are editable in `chrome://extensions/shortcuts`; the popup shows the current binding
 - Minimal popup with light and dark themes
 - Favorite languages, quick search, and complete UI localization
 - Store metadata localized via `_locales/<lang>/messages.json`
@@ -45,7 +46,7 @@ This extension uses the Google Translate service to provide translations but is 
 ## Known Limitations
 
 - Due to browser security restrictions, this extension cannot run on internal pages (e.g., `chrome://`, `edge://`) or on the Chrome Web Store / Edge Add-ons website itself.
-- Translation relies on an external service and requires an active internet connection.
+- Translation relies on an external service and requires an active internet connection. Large pages can be rate-limited; requests retry with exponential backoff.
 
 ### Manual installation (development build)
 
@@ -56,9 +57,9 @@ This extension uses the Google Translate service to provide translations but is 
 
 ## Development
 
-- Popup assets live in `ui/` and shared styles in `css/`.
-- `src/background.js` manages keyboard shortcuts; `src/content.js` applies inline translations.
-- UI strings are defined in `ui/i18n.js`; store messages mirror them under `_locales/`.
+- Popup assets and styles live in `ui/`.
+- `src/background.js` owns the context menus and the `commands` shortcuts; `src/content.js` applies inline translations.
+- All user-facing strings live in `_locales/<lang>/messages.json` and are read with `chrome.i18n`, so the popup, the context menu, and the store metadata share one source.
 - Preferences persist via `chrome.storage.sync` and are restored on load.
 - Use the service worker inspector in `chrome://extensions` to review logs.
 
@@ -68,7 +69,6 @@ This extension uses the Google Translate service to provide translations but is 
 manifest.json
 src/
 ui/
-css/
 icons/
 _locales/
 docs/

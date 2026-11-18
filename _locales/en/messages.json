@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Translate pages or selected text cleanly without popups using quick shortcuts."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Translate page"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Translate selection"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Translate pages or selected text cleanly without popups using quick shortcuts."
+  },
+  "popupSelectLanguage": {
+    "message": "Select a language"
+  },
+  "popupSearch": {
+    "message": "Search"
+  },
+  "popupFavorites": {
+    "message": "Favorites"
+  },
+  "popupAllLanguages": {
+    "message": "All Languages"
+  },
+  "popupShortcutsSection": {
+    "message": "Translation Shortcuts"
+  },
+  "popupShortcutSelection": {
+    "message": "Translate selection"
+  },
+  "popupShortcutPage": {
+    "message": "Translate page"
+  },
+  "popupRevertTip": {
+    "message": "Press again to revert."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Donate to the Project"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

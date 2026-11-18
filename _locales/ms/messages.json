@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Terjemah halaman atau teks yang dipilih dengan bersih tanpa popup menggunakan pintasan pantas."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Terjemah halaman"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Terjemah pilihan"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Terjemah halaman atau teks yang dipilih dengan bersih tanpa popup menggunakan pintasan pantas."
+  },
+  "popupSelectLanguage": {
+    "message": "Pilih bahasa"
+  },
+  "popupSearch": {
+    "message": "Cari"
+  },
+  "popupFavorites": {
+    "message": "Kegemaran"
+  },
+  "popupAllLanguages": {
+    "message": "Semua Bahasa"
+  },
+  "popupShortcutsSection": {
+    "message": "Pintasan Terjemahan"
+  },
+  "popupShortcutSelection": {
+    "message": "Terjemah pilihan"
+  },
+  "popupShortcutPage": {
+    "message": "Terjemah halaman"
+  },
+  "popupRevertTip": {
+    "message": "Tekan lagi untuk membatalkan."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Derma kepada Projek"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

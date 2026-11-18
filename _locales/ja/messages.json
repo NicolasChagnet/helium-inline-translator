@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "ポップアップなしでページや選択したテキストをすっきり翻訳し、素早いショートカットで操作できます。"
+  },
+  "contextMenuTranslatePage": {
+    "message": "ページを翻訳"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "選択を翻訳"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "ポップアップなしでページや選択したテキストをすっきり翻訳し、素早いショートカットで操作できます。"
+  },
+  "popupSelectLanguage": {
+    "message": "言語を選択"
+  },
+  "popupSearch": {
+    "message": "検索"
+  },
+  "popupFavorites": {
+    "message": "お気に入り"
+  },
+  "popupAllLanguages": {
+    "message": "すべての言語"
+  },
+  "popupShortcutsSection": {
+    "message": "翻訳ショートカット"
+  },
+  "popupShortcutSelection": {
+    "message": "選択を翻訳"
+  },
+  "popupShortcutPage": {
+    "message": "ページを翻訳"
+  },
+  "popupRevertTip": {
+    "message": "再度押して元に戻します。"
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ プロジェクトに寄付"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

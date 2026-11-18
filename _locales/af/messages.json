@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Vertaal bladsye of geselekteerde teks skoon sonder opspringvensters deur vinnige kortpaaie te gebruik."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Vertaal bladsy"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Vertaal keuse"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Vertaal bladsye of geselekteerde teks skoon sonder opspringvensters deur vinnige kortpaaie te gebruik."
+  },
+  "popupSelectLanguage": {
+    "message": "Kies 'n taal"
+  },
+  "popupSearch": {
+    "message": "Soek"
+  },
+  "popupFavorites": {
+    "message": "Gunstelinge"
+  },
+  "popupAllLanguages": {
+    "message": "Alle tale"
+  },
+  "popupShortcutsSection": {
+    "message": "Vertaalkortpaaie"
+  },
+  "popupShortcutSelection": {
+    "message": "Vertaal keuse"
+  },
+  "popupShortcutPage": {
+    "message": "Vertaal bladsy"
+  },
+  "popupRevertTip": {
+    "message": "Druk weer om terug te keer."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Skenk aan die projek"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

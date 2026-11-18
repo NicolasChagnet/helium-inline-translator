@@ -6,6 +6,37 @@ This document describes the steps to create a web page and text snippet translat
 
 ## Changelog / Change History
 
+### v1.2.0 (November 2026) - Editable Shortcuts, Localized Menu, Reliable Translation
+
+#### Shortcuts
+- Shortcuts moved to the `commands` manifest API, so they can be rebound in `chrome://extensions/shortcuts` and are handled by the browser instead of the page.
+- Windows and Linux keep `Shift + Alt + Q` (selection) and `Shift + Alt + W` (full page).
+- macOS now uses `Ctrl + S` (selection) and `Ctrl + P` (full page). These are the physical Control key (`MacCtrl`), so ⌘S and ⌘P keep working as Save and Print.
+- Removed the content-script `keydown` listener. Shortcuts no longer fire inside page scripts and no longer hijack browser shortcuts.
+- The popup shows the current binding, read from `chrome.commands.getAll()`, and a ⚙ button copies the shortcut settings address.
+
+#### Localization
+- Right-click menu titles follow the browser UI language instead of being hardcoded in Portuguese.
+- Added `contextMenuTranslatePage` and `contextMenuTranslateSelection` to all 49 locales.
+- Popup strings moved from the hand-rolled `ui/i18n.js` into `_locales/`. `chrome.i18n` is now the single source of truth for the popup, the context menu, and the store metadata.
+
+#### Translation Reliability
+- Translation requests retry up to 3 times with exponential backoff and jitter. Rate limits (`429`), server errors (`5xx`), and network failures are retried; other `4xx` responses are not.
+- Failed page batches now raise the error badge instead of leaving the page silently half-translated.
+- Fixed a failed request overwriting a single selection with the literal error string.
+- Fixed the selection shortcut reverting the previous translation when a new selection was made. The shortcut now translates the current selection, and reverts only when nothing is selected.
+- Added guards against overlapping page and selection translations.
+- Message listeners no longer hold the channel open, so `chrome.tabs.sendMessage` settles instead of waiting for a reply that never comes.
+
+#### Privacy and Permissions
+- Privacy policy now states the actual data flow: page text or selected text is sent to `translate.googleapis.com` for translation.
+- Removed the unused `activeTab` and `scripting` permissions and the `web_accessible_resources` block. The extension now requests only `contextMenus` and `storage`.
+
+#### Cleanup
+- Removed the unused translation balloon (`ui/balloon.*`), the empty `css/inline.css`, the stray `icons/icon128.8.png`, and the unused `ui/i18n.js`.
+- Removed dead popup code: the flag-emoji fallback, the never-firing system-language listener, and the hardcoded version label.
+- The popup version label now reads from the manifest.
+
 ### v1.1.1 (January 2026) - Major Language Expansion and Improvements
 
 #### New Languages (+11, total: 49):

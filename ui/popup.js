@@ -1,14 +1,18 @@
-// Translate all elements with data-i18n attributes
+// Chrome resolves these names from _locales using the browser UI language.
+function t(key) {
+  return chrome.i18n.getMessage(key) || key;
+}
+
 function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    el.textContent = t(key);
+    el.textContent = t(el.getAttribute("data-i18n"));
   });
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    el.placeholder = t(key);
+    el.placeholder = t(el.getAttribute("data-i18n-placeholder"));
   });
+
+  document.documentElement.lang = chrome.i18n.getUILanguage();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -119,7 +123,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let selectedLangCode;
   let favorites;
   let isDark;
-  let flagEmojiSupported = true;
   let searchTerm = "";
 
   const body = document.body;
@@ -132,6 +135,72 @@ document.addEventListener("DOMContentLoaded", async () => {
   const favoritesSection = document.getElementById("favoritesSection");
   const favoritesList = document.getElementById("favoritesList");
   const allLanguages = document.getElementById("allLanguages");
+  const shortcutSelectionKeys = document.getElementById(
+    "shortcutSelectionKeys",
+  );
+  const shortcutPageKeys = document.getElementById("shortcutPageKeys");
+  const customizeShortcuts = document.getElementById("customizeShortcuts");
+  const versionLabel = document.getElementById("versionLabel");
+
+  // --- Shortcut Display ---
+  const SHORTCUTS_PAGE_URL = "chrome://extensions/shortcuts";
+  const IS_MAC = /Mac/i.test(navigator.userAgent);
+  const MAC_KEY_SYMBOLS = {
+    Command: "⌘",
+    MacCtrl: "⌃",
+    Ctrl: "⌃",
+    Alt: "⌥",
+    Option: "⌥",
+    Shift: "⇧",
+  };
+
+  // Shortcuts are user-editable, so read the current binding from Chrome
+  // instead of hardcoding it in the popup markup.
+  function formatShortcut(shortcut) {
+    if (!shortcut) {
+      return "—";
+    }
+
+    const parts = shortcut.split("+");
+    if (!IS_MAC) {
+      return parts.join(" + ");
+    }
+    return parts
+      .map((part) => {
+        if (MAC_KEY_SYMBOLS[part]) {
+          return MAC_KEY_SYMBOLS[part];
+        }
+        return part.length === 1 ? part.toUpperCase() : part;
+      })
+      .join("");
+  }
+
+  async function renderShortcuts() {
+    const commands = await chrome.commands.getAll();
+    const shortcutOf = (name) =>
+      commands.find((command) => command.name === name)?.shortcut || "";
+
+    shortcutSelectionKeys.textContent = formatShortcut(
+      shortcutOf("translate-selection"),
+    );
+    shortcutPageKeys.textContent = formatShortcut(shortcutOf("translate-page"));
+  }
+
+  // Chrome refuses to open chrome:// pages from extension code, so hand the
+  // address to the user on the clipboard instead.
+  async function copyShortcutsPageUrl() {
+    try {
+      await navigator.clipboard.writeText(SHORTCUTS_PAGE_URL);
+      customizeShortcuts.textContent = "✓";
+    } catch (error) {
+      console.error("Could not copy the shortcuts page address.", error);
+      return;
+    }
+
+    setTimeout(() => {
+      customizeShortcuts.textContent = "⚙";
+    }, 1500);
+  }
 
   // --- Preference Management ---
   async function savePreferences() {
@@ -151,9 +220,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       theme: isDark ? "dark" : "light",
       favoriteLangs: favorites,
       targetLanguage: targetLang,
-      uiLanguage: currentLanguage,
     };
     await chrome.storage.sync.set(prefs);
+  }
+
+  // The browser UI language picks both the popup strings and the default
+  // translation target.
+  function defaultTargetLanguage() {
+    const uiLanguage = chrome.i18n.getUILanguage();
+    const exact = languages.find((lang) => lang.code === uiLanguage);
+    if (exact) {
+      return exact.code;
+    }
+
+    const base = uiLanguage.split("-")[0];
+    const mapped = { pt: "pt-BR", zh: "zh-CN", no: "nb" }[base] || base;
+    return languages.some((lang) => lang.code === mapped) ? mapped : "en";
   }
 
   async function loadPreferences() {
@@ -162,19 +244,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       "(prefers-color-scheme: dark)",
     ).matches;
 
-    // Detect system language
-    const systemLang = getSystemLanguage();
-
     const data = await chrome.storage.sync.get({
       theme: systemPrefersDark ? "dark" : "light",
       favoriteLangs: ["en", "es"],
-      targetLanguage: systemLang,
-      uiLanguage: systemLang,
+      targetLanguage: defaultTargetLanguage(),
     });
 
     isDark = data.theme === "dark";
     favorites = data.favoriteLangs;
-    currentLanguage = data.uiLanguage;
 
     // Map stored language codes back to UI codes
     const storedToUIMap = {
@@ -194,7 +271,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     selectedLangCode = matchingLang.code;
 
     updateUIForPreferences();
-    applyTranslations(); // Apply UI translations after loading preferences
+    applyTranslations();
   }
 
   function updateUIForPreferences() {
@@ -206,16 +283,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       setFlagContent(langFlag, lang.flag);
       langName.textContent = lang.name;
     }
-
-    applyTranslations(); // Re-apply translations when theme or language changes
-  }
-
-  function countryCodeToEmoji(countryCode) {
-    const base = 0x1f1e6 - "A".charCodeAt(0);
-    return (
-      String.fromCodePoint(base + countryCode.charCodeAt(0)) +
-      String.fromCodePoint(base + countryCode.charCodeAt(1))
-    );
   }
 
   // --- UI Logic ---
@@ -314,6 +381,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // --- Event Listeners ---
   themeToggle.addEventListener("click", toggleTheme);
+  customizeShortcuts.addEventListener("click", copyShortcutsPageUrl);
 
   selectedLangBtn.addEventListener("click", () => {
     dropdown.classList.toggle("active");
@@ -336,9 +404,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // --- Initial Load ---
-  flagEmojiSupported = detectFlagEmojiSupport();
+  versionLabel.textContent = `v${chrome.runtime.getManifest().version}`;
   await loadPreferences();
   renderLanguages();
+  await renderShortcuts();
 
   // Listen for system theme changes
   window
@@ -348,21 +417,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       updateUIForPreferences();
       savePreferences();
     });
-
-  function detectFlagEmojiSupport() {
-    const testSpan = document.createElement("span");
-    testSpan.style.position = "absolute";
-    testSpan.style.visibility = "hidden";
-    testSpan.style.fontSize = "20px";
-    testSpan.style.lineHeight = "1";
-    testSpan.textContent = countryCodeToEmoji("BR");
-    document.body.appendChild(testSpan);
-    const emojiWidth = testSpan.offsetWidth;
-    testSpan.textContent = "BR";
-    const textWidth = testSpan.offsetWidth;
-    testSpan.remove();
-    return emojiWidth !== textWidth;
-  }
 
   function getFlagAsset(code) {
     if (!code) return undefined;
@@ -374,41 +428,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     element.innerHTML = "";
     element.classList.remove("has-image");
 
-    if (!countryCode) {
-      element.textContent = "";
-      return;
-    }
-
     const assetPath = getFlagAsset(countryCode);
-    if (assetPath) {
-      element.classList.add("has-image");
-      const img = document.createElement("img");
-      img.src = assetPath;
-      img.alt = countryCodeToEmoji(countryCode);
-      img.width = 36;
-      img.height = 36;
-      img.decoding = "async";
-      img.loading = "lazy";
-      element.appendChild(img);
+    if (!assetPath) {
+      element.textContent = countryCode || "";
       return;
     }
 
-    if (flagEmojiSupported) {
-      element.textContent = countryCodeToEmoji(countryCode);
-    } else {
-      element.textContent = countryCode;
-    }
+    // The flag is decorative; the language name sits next to it.
+    element.classList.add("has-image");
+    const img = document.createElement("img");
+    img.src = assetPath;
+    img.alt = "";
+    img.width = 36;
+    img.height = 36;
+    img.decoding = "async";
+    img.loading = "lazy";
+    element.appendChild(img);
   }
-
-  // Listen for system language changes
-  window.addEventListener("change", (e) => {
-    if (e.matches === false) return; // Only process when media query becomes true
-    // Re-detect system language and update UI
-    const newSystemLang = getSystemLanguage();
-    if (newSystemLang !== currentLanguage) {
-      currentLanguage = newSystemLang;
-      applyTranslations();
-      savePreferences();
-    }
-  });
 });

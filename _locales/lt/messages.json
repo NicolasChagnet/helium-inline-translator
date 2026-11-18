@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Išverskite puslapius ar pasirinktą tekstą švariai be iššokančių langų naudodami greitus sparčiuosius klavišus."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Versti puslapį"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Versti pasirinkimą"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Išverskite puslapius ar pasirinktą tekstą švariai be iššokančių langų naudodami greitus sparčiuosius klavišus."
+  },
+  "popupSelectLanguage": {
+    "message": "Pasirinkite kalbą"
+  },
+  "popupSearch": {
+    "message": "Ieškoti"
+  },
+  "popupFavorites": {
+    "message": "Mėgstamiausi"
+  },
+  "popupAllLanguages": {
+    "message": "Visos kalbos"
+  },
+  "popupShortcutsSection": {
+    "message": "Vertimo spartieji klavišai"
+  },
+  "popupShortcutSelection": {
+    "message": "Versti pasirinkimą"
+  },
+  "popupShortcutPage": {
+    "message": "Versti puslapį"
+  },
+  "popupRevertTip": {
+    "message": "Paspauskite dar kartą, kad grįžtumėte."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Paaukoti projektui"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

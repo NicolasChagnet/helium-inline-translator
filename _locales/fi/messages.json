@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Käännä sivuja tai valittua tekstiä ilman ponnahdusikkunoita, selkeästi ja nopeilla pikanäppäimillä."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Käännä sivu"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Käännä valinta"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Käännä sivuja tai valittua tekstiä ilman ponnahdusikkunoita, selkeästi ja nopeilla pikanäppäimillä."
+  },
+  "popupSelectLanguage": {
+    "message": "Valitse kieli"
+  },
+  "popupSearch": {
+    "message": "Haku"
+  },
+  "popupFavorites": {
+    "message": "Suosikit"
+  },
+  "popupAllLanguages": {
+    "message": "Kaikki kielet"
+  },
+  "popupShortcutsSection": {
+    "message": "Käännöksen pikanäppäimet"
+  },
+  "popupShortcutSelection": {
+    "message": "Käännä valinta"
+  },
+  "popupShortcutPage": {
+    "message": "Käännä sivu"
+  },
+  "popupRevertTip": {
+    "message": "Paina uudelleen palataksesi."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Lahjoita projektille"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Prevedite stranice ili odabrani tekst čisto bez skočnih prozora koristeći brze prečace."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Prevedi stranicu"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Prevedi odabir"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Prevedite stranice ili odabrani tekst čisto bez skočnih prozora koristeći brze prečace."
+  },
+  "popupSelectLanguage": {
+    "message": "Odaberite jezik"
+  },
+  "popupSearch": {
+    "message": "Pretraži"
+  },
+  "popupFavorites": {
+    "message": "Favoriti"
+  },
+  "popupAllLanguages": {
+    "message": "Svi jezici"
+  },
+  "popupShortcutsSection": {
+    "message": "Prečaci za prijevod"
+  },
+  "popupShortcutSelection": {
+    "message": "Prevedi odabir"
+  },
+  "popupShortcutPage": {
+    "message": "Prevedi stranicu"
+  },
+  "popupRevertTip": {
+    "message": "Pritisnite ponovo za povratak."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Donirajte projektu"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

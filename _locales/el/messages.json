@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Μεταφράστε σελίδες ή επιλεγμένο κείμενο καθαρά χωρίς αναδυόμενα παράθυρα χρησιμοποιώντας γρήγορες συντομεύσεις."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Μετάφραση σελίδας"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Μετάφραση επιλογής"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Μεταφράστε σελίδες ή επιλεγμένο κείμενο καθαρά χωρίς αναδυόμενα παράθυρα χρησιμοποιώντας γρήγορες συντομεύσεις."
+  },
+  "popupSelectLanguage": {
+    "message": "Επιλέξτε γλώσσα"
+  },
+  "popupSearch": {
+    "message": "Αναζήτηση"
+  },
+  "popupFavorites": {
+    "message": "Αγαπημένα"
+  },
+  "popupAllLanguages": {
+    "message": "Όλες οι γλώσσες"
+  },
+  "popupShortcutsSection": {
+    "message": "Συντομεύσεις μετάφρασης"
+  },
+  "popupShortcutSelection": {
+    "message": "Μετάφραση επιλογής"
+  },
+  "popupShortcutPage": {
+    "message": "Μετάφραση σελίδας"
+  },
+  "popupRevertTip": {
+    "message": "Πατήστε ξανά για αναίρεση."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Δωρεά στο έργο"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

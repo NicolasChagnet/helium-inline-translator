@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "দ্রুত শর্টকাট ব্যবহার করে পপআপ ছাড়াই পরিষ্কারভাবে পৃষ্ঠা বা নির্বাচিত টেক্সট অনুবাদ করুন।"
+  },
+  "contextMenuTranslatePage": {
+    "message": "পৃষ্ঠা অনুবাদ করুন"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "নির্বাচন অনুবাদ করুন"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "দ্রুত শর্টকাট ব্যবহার করে পপআপ ছাড়াই পরিষ্কারভাবে পৃষ্ঠা বা নির্বাচিত টেক্সট অনুবাদ করুন।"
+  },
+  "popupSelectLanguage": {
+    "message": "ভাষা নির্বাচন করুন"
+  },
+  "popupSearch": {
+    "message": "অনুসন্ধান"
+  },
+  "popupFavorites": {
+    "message": "প্রিয়"
+  },
+  "popupAllLanguages": {
+    "message": "সব ভাষা"
+  },
+  "popupShortcutsSection": {
+    "message": "অনুবাদ শর্টকাট"
+  },
+  "popupShortcutSelection": {
+    "message": "নির্বাচন অনুবাদ করুন"
+  },
+  "popupShortcutPage": {
+    "message": "পৃষ্ঠা অনুবাদ করুন"
+  },
+  "popupRevertTip": {
+    "message": "ফিরে যেতে আবার চাপুন।"
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ প্রকল্পে দান করুন"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

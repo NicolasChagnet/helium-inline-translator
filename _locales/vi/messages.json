@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Dịch trang hoặc văn bản đã chọn một cách gọn gàng, không có cửa sổ bật lên, sử dụng phím tắt nhanh."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Dịch trang"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Dịch vùng chọn"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Dịch trang hoặc văn bản đã chọn một cách gọn gàng, không có cửa sổ bật lên, sử dụng phím tắt nhanh."
+  },
+  "popupSelectLanguage": {
+    "message": "Chọn ngôn ngữ"
+  },
+  "popupSearch": {
+    "message": "Tìm kiếm"
+  },
+  "popupFavorites": {
+    "message": "Yêu thích"
+  },
+  "popupAllLanguages": {
+    "message": "Tất cả ngôn ngữ"
+  },
+  "popupShortcutsSection": {
+    "message": "Phím tắt dịch"
+  },
+  "popupShortcutSelection": {
+    "message": "Dịch vùng chọn"
+  },
+  "popupShortcutPage": {
+    "message": "Dịch trang"
+  },
+  "popupRevertTip": {
+    "message": "Nhấn lại để hoàn tác."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Ủng hộ dự án"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

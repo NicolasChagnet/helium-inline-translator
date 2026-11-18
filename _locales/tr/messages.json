@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Pop-up olmadan, temiz bir görünümle ve hızlı kısayollarla sayfaları veya seçili metni çevirin."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Sayfayı çevir"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Seçimi çevir"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Pop-up olmadan, temiz bir görünümle ve hızlı kısayollarla sayfaları veya seçili metni çevirin."
+  },
+  "popupSelectLanguage": {
+    "message": "Bir dil seçin"
+  },
+  "popupSearch": {
+    "message": "Ara"
+  },
+  "popupFavorites": {
+    "message": "Favoriler"
+  },
+  "popupAllLanguages": {
+    "message": "Tüm Diller"
+  },
+  "popupShortcutsSection": {
+    "message": "Çeviri kısayolları"
+  },
+  "popupShortcutSelection": {
+    "message": "Seçimi çevir"
+  },
+  "popupShortcutPage": {
+    "message": "Sayfayı çevir"
+  },
+  "popupRevertTip": {
+    "message": "Tekrar basarak geri dönün."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Projeye Bağış Yap"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Oversett sider eller valgt tekst uten popuper, ryddig og med raske snarveier."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Oversett side"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Oversett valg"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Oversett sider eller valgt tekst uten popuper, ryddig og med raske snarveier."
+  },
+  "popupSelectLanguage": {
+    "message": "Velg et språk"
+  },
+  "popupSearch": {
+    "message": "Søk"
+  },
+  "popupFavorites": {
+    "message": "Favoritter"
+  },
+  "popupAllLanguages": {
+    "message": "Alle språk"
+  },
+  "popupShortcutsSection": {
+    "message": "Oversettelsessnarveier"
+  },
+  "popupShortcutSelection": {
+    "message": "Oversett valg"
+  },
+  "popupShortcutPage": {
+    "message": "Oversett side"
+  },
+  "popupRevertTip": {
+    "message": "Trykk igjen for å gå tilbake."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Doner til prosjektet"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

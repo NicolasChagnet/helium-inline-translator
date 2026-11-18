@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Tõlkige lehti või valitud teksti puhtalt ilma hüpikakendeta, kasutades kiireid otseteid."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Tõlgi leht"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Tõlgi valik"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Tõlkige lehti või valitud teksti puhtalt ilma hüpikakendeta, kasutades kiireid otseteid."
+  },
+  "popupSelectLanguage": {
+    "message": "Valige keel"
+  },
+  "popupSearch": {
+    "message": "Otsi"
+  },
+  "popupFavorites": {
+    "message": "Lemmikud"
+  },
+  "popupAllLanguages": {
+    "message": "Kõik keeled"
+  },
+  "popupShortcutsSection": {
+    "message": "Tõlke otseteed"
+  },
+  "popupShortcutSelection": {
+    "message": "Tõlgi valik"
+  },
+  "popupShortcutPage": {
+    "message": "Tõlgi leht"
+  },
+  "popupRevertTip": {
+    "message": "Vajutage uuesti tagasi pöördumiseks."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Anneta projektile"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

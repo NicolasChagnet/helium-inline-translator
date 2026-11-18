@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Iwwersetzen Säiten oder ausgewielte Texter propper ouni Popup-Fënsteren mat schnelle Tastekombinatiounen."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Säit iwwersetzen"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Auswiel iwwersetzen"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Iwwersetzen Säiten oder ausgewielte Texter propper ouni Popup-Fënsteren mat schnelle Tastekombinatiounen."
+  },
+  "popupSelectLanguage": {
+    "message": "Wielt eng Sprooch"
+  },
+  "popupSearch": {
+    "message": "Sichen"
+  },
+  "popupFavorites": {
+    "message": "Favoriten"
+  },
+  "popupAllLanguages": {
+    "message": "All Sproochen"
+  },
+  "popupShortcutsSection": {
+    "message": "Iwwersetzungs-Ofkierzungen"
+  },
+  "popupShortcutSelection": {
+    "message": "Auswiel iwwersetzen"
+  },
+  "popupShortcutPage": {
+    "message": "Säit iwwersetzen"
+  },
+  "popupRevertTip": {
+    "message": "Dréckt nach eng Kéier fir zréckzegoen."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Un de Projet spenden"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

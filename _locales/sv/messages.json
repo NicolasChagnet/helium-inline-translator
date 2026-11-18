@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Översätt sidor eller markerad text utan popupfönster, rent och med snabba genvägar."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Översätt sida"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Översätt markering"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Översätt sidor eller markerad text utan popupfönster, rent och med snabba genvägar."
+  },
+  "popupSelectLanguage": {
+    "message": "Välj ett språk"
+  },
+  "popupSearch": {
+    "message": "Sök"
+  },
+  "popupFavorites": {
+    "message": "Favoriter"
+  },
+  "popupAllLanguages": {
+    "message": "Alla språk"
+  },
+  "popupShortcutsSection": {
+    "message": "Översättningsgenvägar"
+  },
+  "popupShortcutSelection": {
+    "message": "Översätt markering"
+  },
+  "popupShortcutPage": {
+    "message": "Översätt sida"
+  },
+  "popupRevertTip": {
+    "message": "Tryck igen för att gå tillbaka."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Donera till projektet"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

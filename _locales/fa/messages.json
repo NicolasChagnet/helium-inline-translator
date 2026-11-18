@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "صفحات یا متن انتخاب شده را بدون پنجره بازشو با استفاده از میانبرهای سریع ترجمه کنید."
+  },
+  "contextMenuTranslatePage": {
+    "message": "ترجمه صفحه"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "ترجمه انتخاب"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "صفحات یا متن انتخاب شده را بدون پنجره بازشو با استفاده از میانبرهای سریع ترجمه کنید."
+  },
+  "popupSelectLanguage": {
+    "message": "زبان را انتخاب کنید"
+  },
+  "popupSearch": {
+    "message": "جستجو"
+  },
+  "popupFavorites": {
+    "message": "علاقه‌مندی‌ها"
+  },
+  "popupAllLanguages": {
+    "message": "همه زبان‌ها"
+  },
+  "popupShortcutsSection": {
+    "message": "میانبرهای ترجمه"
+  },
+  "popupShortcutSelection": {
+    "message": "ترجمه انتخاب"
+  },
+  "popupShortcutPage": {
+    "message": "ترجمه صفحه"
+  },
+  "popupRevertTip": {
+    "message": "برای بازگشت دوباره فشار دهید."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ حمایت از پروژه"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

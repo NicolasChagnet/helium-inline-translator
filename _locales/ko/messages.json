@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "팝업 없이 깔끔하게 페이지나 선택한 텍스트를 빠른 단축키로 번역합니다."
+  },
+  "contextMenuTranslatePage": {
+    "message": "페이지 번역"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "선택 번역"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "팝업 없이 깔끔하게 페이지나 선택한 텍스트를 빠른 단축키로 번역합니다."
+  },
+  "popupSelectLanguage": {
+    "message": "언어 선택"
+  },
+  "popupSearch": {
+    "message": "검색"
+  },
+  "popupFavorites": {
+    "message": "즐겨찾기"
+  },
+  "popupAllLanguages": {
+    "message": "모든 언어"
+  },
+  "popupShortcutsSection": {
+    "message": "번역 단축키"
+  },
+  "popupShortcutSelection": {
+    "message": "선택 번역"
+  },
+  "popupShortcutPage": {
+    "message": "페이지 번역"
+  },
+  "popupRevertTip": {
+    "message": "한 번 더 눌러 되돌립니다."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ 프로젝트에 기부"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

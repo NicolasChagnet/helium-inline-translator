@@ -14,10 +14,10 @@ Helium Inline Translator keeps translations focused and fast:
 
 - Born from the move from Microsoft Edge to Helium Browser, matching Edge’s native translation flow.
 - Translate entire pages or selected snippets instantly.
-- Trigger shortcuts (`Shift + Alt + Q` for selections, `Shift + Alt + W` for full pages).
+- Trigger shortcuts (`Shift + Alt + Q` / `Shift + Alt + W` on Windows and Linux, `Ctrl + S` / `Ctrl + P` on macOS), or pick your own in the browser's shortcut settings.
 - Work without intrusive popups thanks to inline rendering.
 - Save favorite languages, search quickly, and switch themes.
-- Localized interface and store metadata in 49 languages.
+- Localized interface, right-click menu, and store metadata in 49 languages.
 
 Press a shortcut again to revert to the original content. Preferences sync across signed-in devices via Chrome Sync. Built for people who translate frequently and value a clean reading experience.
 

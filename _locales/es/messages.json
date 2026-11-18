@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Traduce páginas o textos seleccionados sin ventanas emergentes y de forma limpia con atajos rápidos."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Traducir página"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Traducir selección"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Traduce páginas o textos seleccionados sin ventanas emergentes y de forma limpia con atajos rápidos."
+  },
+  "popupSelectLanguage": {
+    "message": "Selecciona un idioma"
+  },
+  "popupSearch": {
+    "message": "Buscar"
+  },
+  "popupFavorites": {
+    "message": "Favoritos"
+  },
+  "popupAllLanguages": {
+    "message": "Todos los idiomas"
+  },
+  "popupShortcutsSection": {
+    "message": "Atajos de traducción"
+  },
+  "popupShortcutSelection": {
+    "message": "Traducir selección"
+  },
+  "popupShortcutPage": {
+    "message": "Traducir página"
+  },
+  "popupRevertTip": {
+    "message": "Pulsa de nuevo para revertir."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Donar al Proyecto"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

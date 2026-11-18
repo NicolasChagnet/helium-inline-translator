@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Перекладайте сторінки або вибраний текст чисто, без спливаючих вікон, використовуючи швидкі клавіші."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Перекласти сторінку"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Перекласти виділення"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Перекладайте сторінки або вибраний текст чисто, без спливаючих вікон, за допомогою швидких клавіш."
+  },
+  "popupSelectLanguage": {
+    "message": "Виберіть мову"
+  },
+  "popupSearch": {
+    "message": "Пошук"
+  },
+  "popupFavorites": {
+    "message": "Обране"
+  },
+  "popupAllLanguages": {
+    "message": "Всі мови"
+  },
+  "popupShortcutsSection": {
+    "message": "Гарячі клавіші перекладу"
+  },
+  "popupShortcutSelection": {
+    "message": "Перекласти виділення"
+  },
+  "popupShortcutPage": {
+    "message": "Перекласти сторінку"
+  },
+  "popupRevertTip": {
+    "message": "Натисніть ще раз для скасування."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Підтримати проект"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

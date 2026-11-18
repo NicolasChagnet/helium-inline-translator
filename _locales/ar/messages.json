@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "ترجم صفحات أو نصوصًا محددة بلا نوافذ منبثقة وبشكل أنيق باستخدام اختصارات سريعة."
+  },
+  "contextMenuTranslatePage": {
+    "message": "ترجم الصفحة"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "ترجم التحديد"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "ترجم صفحات أو نصوصًا محددة بلا نوافذ منبثقة وبشكل أنيق باستخدام اختصارات سريعة."
+  },
+  "popupSelectLanguage": {
+    "message": "اختر لغة"
+  },
+  "popupSearch": {
+    "message": "بحث"
+  },
+  "popupFavorites": {
+    "message": "المفضلة"
+  },
+  "popupAllLanguages": {
+    "message": "جميع اللغات"
+  },
+  "popupShortcutsSection": {
+    "message": "اختصارات الترجمة"
+  },
+  "popupShortcutSelection": {
+    "message": "ترجم التحديد"
+  },
+  "popupShortcutPage": {
+    "message": "ترجم الصفحة"
+  },
+  "popupRevertTip": {
+    "message": "اضغط مرة أخرى للرجوع."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ تبرع للمشروع"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

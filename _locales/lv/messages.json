@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Tulkojiet lapas vai atlasīto tekstu tīri bez uznirstošajiem logiem, izmantojot ātrās saīsnes."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Tulkot lapu"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Tulkot atlasi"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Tulkojiet lapas vai atlasīto tekstu tīri bez uznirstošajiem logiem, izmantojot ātrās saīsnes."
+  },
+  "popupSelectLanguage": {
+    "message": "Izvēlieties valodu"
+  },
+  "popupSearch": {
+    "message": "Meklēt"
+  },
+  "popupFavorites": {
+    "message": "Izlase"
+  },
+  "popupAllLanguages": {
+    "message": "Visas valodas"
+  },
+  "popupShortcutsSection": {
+    "message": "Tulkošanas saīsnes"
+  },
+  "popupShortcutSelection": {
+    "message": "Tulkot atlasi"
+  },
+  "popupShortcutPage": {
+    "message": "Tulkot lapu"
+  },
+  "popupRevertTip": {
+    "message": "Nospiediet vēlreiz, lai atgrieztos."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Ziedot projektam"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

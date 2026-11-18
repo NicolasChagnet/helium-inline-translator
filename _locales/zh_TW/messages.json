@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "無需彈出視窗，使用快捷鍵即可乾淨俐落地翻譯頁面或選取文字。"
+  },
+  "contextMenuTranslatePage": {
+    "message": "翻譯頁面"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "翻譯選取"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "無需彈出視窗，使用快捷鍵即可乾淨俐落地翻譯頁面或選取文字。"
+  },
+  "popupSelectLanguage": {
+    "message": "選擇語言"
+  },
+  "popupSearch": {
+    "message": "搜尋"
+  },
+  "popupFavorites": {
+    "message": "收藏夾"
+  },
+  "popupAllLanguages": {
+    "message": "所有語言"
+  },
+  "popupShortcutsSection": {
+    "message": "翻譯快捷鍵"
+  },
+  "popupShortcutSelection": {
+    "message": "翻譯選取"
+  },
+  "popupShortcutPage": {
+    "message": "翻譯頁面"
+  },
+  "popupRevertTip": {
+    "message": "再次按下即可還原。"
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ 捐獻給專案"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

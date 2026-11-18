@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "תרגם דפים או טקסט נבחר בצורה נקייה ללא חלונות קופצים באמצעות קיצורי דרך מהירים."
+  },
+  "contextMenuTranslatePage": {
+    "message": "תרגם דף"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "תרגם בחירה"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "תרגם דפים או טקסט נבחר בצורה נקייה ללא חלונות קופצים באמצעות קיצורי דרך מהירים."
+  },
+  "popupSelectLanguage": {
+    "message": "בחר שפה"
+  },
+  "popupSearch": {
+    "message": "חיפוש"
+  },
+  "popupFavorites": {
+    "message": "מועדפים"
+  },
+  "popupAllLanguages": {
+    "message": "כל השפות"
+  },
+  "popupShortcutsSection": {
+    "message": "קיצורי דרך לתרגום"
+  },
+  "popupShortcutSelection": {
+    "message": "תרגם בחירה"
+  },
+  "popupShortcutPage": {
+    "message": "תרגם דף"
+  },
+  "popupRevertTip": {
+    "message": "לחץ שוב כדי לבטל."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ תרום לפרויקט"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

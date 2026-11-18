@@ -13,11 +13,13 @@ const SR_SEPARATOR_LANGS = ["sr", "ur"];
 // Global state for full-page translation
 let pageOriginals = new Map();
 let isPageTranslated = false;
+let isPageTranslating = false;
 
 // Global state for selection translation
 let selectionOriginals = new Map();
 let lastTranslatedNodes = [];
 let isSelectionTranslated = false;
+let isSelectionTranslating = false;
 
 const translationCache = new Map();
 let currentTargetLanguage = "en";
@@ -33,12 +35,16 @@ function getTargetLanguageFromStorage() {
 // Main listener for commands from the background script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "translate-selection") {
-    if (isSelectionTranslated) {
-      revertSelectionTranslation();
-    } else {
+    const selection = window.getSelection();
+    if (selection && !selection.isCollapsed) {
       handleSelectionTranslation();
+    } else if (isSelectionTranslated) {
+      revertSelectionTranslation();
     }
   } else if (request.action === "translate-full-page") {
+    if (isPageTranslating) {
+      return;
+    }
     if (isPageTranslated) {
       console.log(
         "Helium Inline Translator: Page is already translated. Reverting now.",
@@ -50,132 +56,90 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.action === "revert-translation") {
     revertPageTranslation();
   }
-  return true;
-});
-
-// Keyboard shortcuts (fixed)
-document.addEventListener("keydown", async (e) => {
-  const pressedKey =
-    (e.ctrlKey ? "ctrl+" : "") +
-    (e.shiftKey ? "shift+" : "") +
-    (e.altKey ? "alt+" : "") +
-    e.key.toLowerCase();
-
-  console.log("Helium Inline Translator: Key pressed:", pressedKey);
-
-  // Translate/revert selection with Shift+Alt+Q
-  if (pressedKey === "shift+alt+q") {
-    console.log("Helium Inline Translator: Shift+Alt+Q detected!");
-    e.preventDefault();
-    const selection = window.getSelection();
-
-    if (isSelectionTranslated) {
-      console.log("Helium Inline Translator: Reverting selection translation");
-      revertSelectionTranslation();
-    } else if (selection && !selection.isCollapsed) {
-      console.log("Helium Inline Translator: Translating selection");
-      await handleSelectionTranslation();
-    } else {
-      console.log("Helium Inline Translator: No selection to translate");
-    }
-  }
-
-  // Translate/revert full page with Shift+Alt+W
-  if (pressedKey === "shift+alt+w") {
-    console.log("Helium Inline Translator: Shift+Alt+W detected!");
-    e.preventDefault();
-
-    if (isPageTranslated) {
-      console.log("Helium Inline Translator: Reverting page translation");
-      revertPageTranslation();
-    } else {
-      console.log("Helium Inline Translator: Translating full page");
-      await handleFullPageTranslation();
-    }
-  }
+  // Nothing is sent back; returning true would keep the message channel open.
 });
 
 // Handles translating the current user selection
 async function handleSelectionTranslation() {
-  console.log("Helium Inline Translator: handleSelectionTranslation called");
+  if (isSelectionTranslating) {
+    return;
+  }
+
+  // Restore a previous selection translation first, so the new one is
+  // translated from the original text.
+  if (isSelectionTranslated) {
+    revertSelectionTranslation();
+  }
+
   const selection = window.getSelection();
-
-  if (!selection.rangeCount || selection.isCollapsed) {
-    console.log("Helium Inline Translator: No valid selection");
+  if (!selection || !selection.rangeCount || selection.isCollapsed) {
     return;
   }
 
-  // Get current target language for separator selection
-  currentTargetLanguage = await getTargetLanguageFromStorage();
-  const separator = SR_SEPARATOR_LANGS.includes(currentTargetLanguage)
-    ? TRANSLATION_SEPARATOR_SR
-    : ALT_SEPARATOR_LANGS.includes(currentTargetLanguage)
-      ? TRANSLATION_SEPARATOR_ALT
-      : TRANSLATION_SEPARATOR;
-
-  const range = selection.getRangeAt(0);
-  console.log("Helium Inline Translator: Range obtained", {
-    startContainer: range.startContainer,
-    endContainer: range.endContainer,
-    commonAncestor: range.commonAncestorContainer,
-  });
-
-  const textNodes = collectTextNodesFromRange(range);
-  console.log(
-    `Helium Inline Translator: Collected ${textNodes.length} text nodes`,
-  );
-
-  if (!textNodes.length) {
-    console.log("Helium Inline Translator: No text nodes found in selection.");
-    return;
-  }
-
-  const joinedText = textNodes.map((node) => node.nodeValue).join(separator);
-
-  let response;
+  isSelectionTranslating = true;
   try {
-    response = await chrome.runtime.sendMessage({
-      action: "getTranslation",
-      text: joinedText,
-    });
-  } catch (error) {
-    console.error(
-      "Helium Inline Translator: Failed to translate selection.",
-      error,
-    );
-    return;
-  }
+    currentTargetLanguage = await getTargetLanguageFromStorage();
+    const separator = SR_SEPARATOR_LANGS.includes(currentTargetLanguage)
+      ? TRANSLATION_SEPARATOR_SR
+      : ALT_SEPARATOR_LANGS.includes(currentTargetLanguage)
+        ? TRANSLATION_SEPARATOR_ALT
+        : TRANSLATION_SEPARATOR;
 
-  if (!response || typeof response.translatedText !== "string") {
-    console.error(
-      "Helium Inline Translator: Invalid selection translation response.",
-      response,
-    );
-    return;
-  }
-
-  const translatedTexts = response.translatedText.split(separator);
-  if (translatedTexts.length !== textNodes.length) {
-    console.error("Helium Inline Translator: Selection translation mismatch.", {
-      expected: textNodes.length,
-      received: translatedTexts.length,
-    });
-    return;
-  }
-
-  // Store originals for undo
-  textNodes.forEach((node, index) => {
-    if (node.isConnected) {
-      if (!selectionOriginals.has(node)) {
-        selectionOriginals.set(node, node.nodeValue);
-      }
-      node.nodeValue = translatedTexts[index];
+    const textNodes = collectTextNodesFromRange(selection.getRangeAt(0));
+    if (!textNodes.length) {
+      return;
     }
-  });
 
-  lastTranslatedNodes = textNodes;
-  isSelectionTranslated = true;
-  selection.removeAllRanges();
+    const joinedText = textNodes.map((node) => node.nodeValue).join(separator);
+
+    let response;
+    try {
+      response = await chrome.runtime.sendMessage({
+        action: "getTranslation",
+        text: joinedText,
+      });
+    } catch (error) {
+      console.error(
+        "Helium Inline Translator: Failed to translate selection.",
+        error,
+      );
+      return;
+    }
+
+    if (
+      !response ||
+      !response.success ||
+      typeof response.translatedText !== "string"
+    ) {
+      console.error(
+        "Helium Inline Translator: Invalid selection translation response.",
+        response,
+      );
+      return;
+    }
+
+    const translatedTexts = response.translatedText.split(separator);
+    if (translatedTexts.length !== textNodes.length) {
+      console.error("Helium Inline Translator: Selection translation mismatch.", {
+        expected: textNodes.length,
+        received: translatedTexts.length,
+      });
+      return;
+    }
+
+    textNodes.forEach((node, index) => {
+      if (node.isConnected) {
+        selectionOriginals.set(node, node.nodeValue);
+        node.nodeValue = translatedTexts[index];
+      }
+    });
+
+    lastTranslatedNodes = textNodes;
+    isSelectionTranslated = true;
+    selection.removeAllRanges();
+  } finally {
+    isSelectionTranslating = false;
+  }
 }
 
 // Reverts the last selection translation
@@ -231,9 +195,14 @@ function collectTextNodesFromRange(range) {
 
 // Handles translating all text nodes on the page
 async function handleFullPageTranslation() {
+  if (isPageTranslating) {
+    return;
+  }
+
   console.log(
     "Helium Inline Translator: Starting full page translation with batching.",
   );
+  isPageTranslating = true;
   isPageTranslated = true;
   currentTargetLanguage = await getTargetLanguageFromStorage();
 
@@ -258,17 +227,27 @@ async function handleFullPageTranslation() {
   );
 
   const nodesToTranslate = [];
-  while (walker.nextNode()) {
-    nodesToTranslate.push(walker.currentNode);
-  }
-
-  for (const node of nodesToTranslate) {
-    if (!pageOriginals.has(node)) {
-      pageOriginals.set(node, node.nodeValue);
+  try {
+    while (walker.nextNode()) {
+      nodesToTranslate.push(walker.currentNode);
     }
-  }
 
-  await translateNodesInBatches(nodesToTranslate);
+    for (const node of nodesToTranslate) {
+      if (!pageOriginals.has(node)) {
+        pageOriginals.set(node, node.nodeValue);
+      }
+    }
+
+    const failedBatches = await translateNodesInBatches(nodesToTranslate);
+    if (failedBatches > 0) {
+      // A green badge would hide the untranslated parts of the page.
+      chrome.runtime
+        .sendMessage({ action: "reportTranslationFailure" })
+        .catch(() => {});
+    }
+  } finally {
+    isPageTranslating = false;
+  }
 
   console.log(
     `Helium Inline Translator: Finished. Translated ${pageOriginals.size} text nodes.`,
@@ -306,6 +285,7 @@ async function translateNodesInBatches(nodes) {
 
   const queue = batches.slice();
   const running = [];
+  let failedBatches = 0;
 
   while (queue.length > 0 || running.length > 0) {
     while (queue.length > 0 && running.length < MAX_PARALLEL_REQUESTS) {
@@ -323,6 +303,8 @@ async function translateNodesInBatches(nodes) {
       await Promise.race(running);
     }
   }
+
+  return failedBatches;
 
   async function processBatch(nodeBatch) {
     if (!nodeBatch || nodeBatch.length === 0) {
@@ -364,8 +346,11 @@ async function translateNodesInBatches(nodes) {
           text: joinedText,
         });
 
-        const translatedJoinedText = response?.translatedText || "";
-        const translatedTexts = translatedJoinedText.split(separator);
+        if (!response?.success) {
+          throw new Error("Translation request failed");
+        }
+
+        const translatedTexts = response.translatedText.split(separator);
 
         if (translatedTexts.length === textsToTranslate.length) {
           translationIndices.forEach((batchIndex, resultIndex) => {
@@ -374,6 +359,7 @@ async function translateNodesInBatches(nodes) {
             translationCache.set(cacheKeys[batchIndex], translatedText);
           });
         } else {
+          failedBatches++;
           console.error(
             "Helium Inline Translator: Batch translation mismatch.",
             {
@@ -383,6 +369,7 @@ async function translateNodesInBatches(nodes) {
           );
         }
       } catch (e) {
+        failedBatches++;
         console.error(
           "Helium Inline Translator: Failed to process a batch.",
           e,

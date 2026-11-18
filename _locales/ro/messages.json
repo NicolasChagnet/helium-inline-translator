@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "Traduceți pagini sau text selectat curat, fără ferestre pop-up, folosind comenzi rapide."
+  },
+  "contextMenuTranslatePage": {
+    "message": "Traduce pagina"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "Traduce selecția"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "Traduceți pagini sau text selectat curat, fără ferestre pop-up, folosind comenzi rapide."
+  },
+  "popupSelectLanguage": {
+    "message": "Selectați limba"
+  },
+  "popupSearch": {
+    "message": "Căutare"
+  },
+  "popupFavorites": {
+    "message": "Favorite"
+  },
+  "popupAllLanguages": {
+    "message": "Toate limbile"
+  },
+  "popupShortcutsSection": {
+    "message": "Comenzi rapide traducere"
+  },
+  "popupShortcutSelection": {
+    "message": "Traduce selecția"
+  },
+  "popupShortcutPage": {
+    "message": "Traduce pagina"
+  },
+  "popupRevertTip": {
+    "message": "Apăsați din nou pentru a reveni."
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ Donează proiectului"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }

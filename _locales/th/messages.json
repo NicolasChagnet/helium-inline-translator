@@ -1,5 +1,50 @@
 {
   "appDesc": {
     "message": "แปลหน้าเว็บหรือข้อความที่เลือกอย่างสะอาดโดยไม่มีป๊อปอัปโดยใช้ทางลัดด่วน"
+  },
+  "contextMenuTranslatePage": {
+    "message": "แปลหน้า"
+  },
+  "contextMenuTranslateSelection": {
+    "message": "แปลส่วนที่เลือก"
+  },
+  "popupTitle": {
+    "message": "Helium Inline Translator"
+  },
+  "popupDescription": {
+    "message": "แปลหน้าเว็บหรือข้อความที่เลือกอย่างสะอาดโดยไม่มีป๊อปอัปโดยใช้ทางลัดด่วน"
+  },
+  "popupSelectLanguage": {
+    "message": "เลือกภาษา"
+  },
+  "popupSearch": {
+    "message": "ค้นหา"
+  },
+  "popupFavorites": {
+    "message": "รายการโปรด"
+  },
+  "popupAllLanguages": {
+    "message": "ภาษาทั้งหมด"
+  },
+  "popupShortcutsSection": {
+    "message": "ทางลัดการแปล"
+  },
+  "popupShortcutSelection": {
+    "message": "แปลส่วนที่เลือก"
+  },
+  "popupShortcutPage": {
+    "message": "แปลหน้า"
+  },
+  "popupRevertTip": {
+    "message": "กดอีกครั้งเพื่อเปลี่ยนกลับ"
+  },
+  "popupGithub": {
+    "message": "GitHub"
+  },
+  "popupSupport": {
+    "message": "❤️ บริจาคให้โครงการ"
+  },
+  "popupContact": {
+    "message": "LinkedIn"
   }
 }
